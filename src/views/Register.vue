@@ -7,25 +7,37 @@
     </div>
     <div class="register-step">
         <div class="step1">
-            <span class="step-num">1</span><span class="step-title">设置用户名</span>
+            <span class="step-num" >1</span><span class="step-title" >设置用户名</span>
         </div>
         <div class="step2">
-            <span class="step-num">2</span><span class="step-title">完善账号信息</span>
+            <span class="step-num" v-bind:style="stepNum2">2</span><span class="step-title" v-bind:style="stepTitle2" >完善账号信息</span>
         </div>
          <div class="step3">
-            <span class="step-num">3</span><span class="step-title">注册成功</span>
+            <span class="step-num" v-bind:style="stepNum3">3</span><span class="step-title" v-bind:style="stepTitle3">注册成功</span>
         </div>
 
     </div>
     <div class="line"></div>
     <div class="register_form">
-        <div class="phone-num">
-         <input placeholder="手机号码" /> 
-         <a href="#">发送验证码</a>
+        <div v-show="showUserInfo">
+            <div class="phone-num">
+                <input placeholder="手机号码" /> 
+                <a href="#">发送验证码</a>
+            </div>
+            
+            <div class="valite-code"> <input placeholder="验证码" type="text"  /></div>
+            
+        </div>
+         <div class="perfer-info" v-show="showPerferInfo">
+             <div><input class ="nick-name" placeholder="昵称" type="text"/></div>
+             <div><input class="password" placeholder="密码" type="password"/></div>
+             <div><input class="password" placeholder="确认密码" type="password"/></div>
          </div>
-         
-       <div class="valite-code"> <input placeholder="验证码" type="text"  /></div>
-       <div class="next-step"><a class="submit" href="javascript:;" >下一步</a></div>
+         <div v-show="isSuccess" >
+             <div class="success-tag"><img src="../../static/images/gou.jpg" style="width:40px;height:40px;"> 恭喜您注册成功</div>
+             <div class="login"><a href="/login" class="submit">立即登录</a></div>
+         </div>
+         <div class="next-step" v-show="showNextBtn"><a class="submit"  @click="nextstep()" >下一步</a></div>
     </div>
   </div>
 </template>
@@ -33,9 +45,45 @@
 export default {
   data() {
    
+   return {
+   currentStep:1,
+   showPerferInfo:false,
+   showUserInfo:true,
+   isSuccess:false,
+   showNextBtn:true,
+   stepNum3:{
+       backgroundColor:""
+   },
+   stepTitle3:{
+       color:""
+   },
+    stepNum2:{
+       backgroundColor:""
+   },
+   stepTitle2:{
+       color:""
+   }
+   };
   },
   methods: {
-    // 模拟登录
+    // 下一步
+    nextstep(){
+        if(!this.showPerferInfo){
+           this.showPerferInfo =true;
+           this.showUserInfo=false;
+           this.stepNum2.backgroundColor="#00a597";
+           this.stepTitle2.color="#000000";
+           
+        }
+        else if(this.showPerferInfo){
+         // this.showPerferInfo = false;
+          this.stepNum3.backgroundColor="#00a597";
+           this.stepTitle3.color="#000000";
+           this.showPerferInfo =false;
+           this.showNextBtn = false;
+           this.isSuccess = true;
+        }
+    }
    
   }
 };
@@ -80,7 +128,7 @@ margin-left: 100px;
     height: 45px;
     margin-left:0px;
     margin-right: 0px;
-    margin-top:20px;
+    margin-top:5px;
     
 }
 .phone-num  input{
@@ -98,6 +146,12 @@ margin-left: 100px;
     width:80%;
     border:solid rgba(2,223,223,0.5) 1px;
 }
+.nick-name,.password{
+    height: 45px;
+    width:80%;
+    border:solid rgba(2,223,223,0.5) 1px;
+    margin-top:5px;
+}
 
 
 .submit {
@@ -111,7 +165,7 @@ margin-left: 100px;
       font-size: 16px;
        width:320px;
        
-        margin-top:40px;
+        margin-top:5px;
     
     }
    
@@ -169,5 +223,16 @@ margin-left: 100px;
        margin-left: 20px;
         background-color: #888888;
         
+    }
+    .register-success{
+
+    }
+    .success-tag{
+        color:#00ff00;
+        font-size: 40px;
+        margin-top:40px;
+    }
+    .login{
+        margin-top:40px;
     }
 </style>

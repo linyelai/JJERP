@@ -124,7 +124,7 @@ export default {
 }
 .custom-00a597 .el-menu,.wq-sidebar
 {
-  background-color: #404040;
+  background-color: #00a597;
 
 }
 .custom-00a597 .el-menu-item{

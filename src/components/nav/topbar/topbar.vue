@@ -41,7 +41,7 @@ export default {
 <style lang="scss">
 .wq-topbar {
   height:50px;
-  background-color: #404040;
+  background-color: #00af97;
   padding-top:10px;
 }
   .username-label
