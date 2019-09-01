@@ -7,6 +7,7 @@ import tables from './tables.js'
 import forms from './forms.js'
 import  EditStaff from '../views/staff/editStaff.vue'
 import Register from '../views/Register.vue'
+import AddProduct from '../views/goods/addProduct.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -40,7 +41,13 @@ export default new Router({
     redirect: 'tables/basic',
     component: Index,
     children: tables
-  }, {
+  }, 
+  {
+    path:'/addProduct',
+    name:'addProduct',
+    component:AddProduct
+  },
+  {
     path: '/forms',
     name: 'forms',
     redirect: 'forms/basicneed',

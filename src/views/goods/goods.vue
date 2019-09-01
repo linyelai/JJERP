@@ -5,6 +5,7 @@
         <el-input placeholder="商品名" style="width:120px; " ></el-input>
         <el-button type="primary" icon="el-icon-search" style="margin-left:10px; ">搜索</el-button>
         <el-button type="primary" icon="el-icon-delete">删除</el-button>
+        <el-button type="primary" icon="el-icon-delete" @click="addProduct">发布商品</el-button>
       </div>
     </div>
     <div class="bastic-table">
@@ -97,6 +98,9 @@
       {
         console.log(val.jobId);
       },
+      addProduct:function(){
+        this.$router.push("/addProduct");
+      }
     }
   }
 </script>
