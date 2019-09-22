@@ -8,6 +8,12 @@ import forms from './forms.js'
 import  EditStaff from '../views/staff/editStaff.vue'
 import Register from '../views/Register.vue'
 import AddProduct from '../views/goods/addProduct.vue'
+import GoodList from '../views/goods/goodlist.vue'
+import GoodDetail from '../views/goods/goodDetail.vue'
+import MemberInfo from '../views/members/memberInfo.vue'
+import RecieverAddress from '../views/members/recieverAddress.vue'
+import RecieverAddressList from '../views/members/RecieverAddressList'
+import MemberOrders from '../views/members/MemberOrders'
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +31,15 @@ export default new Router({
     path:'/register',
     name:'register',
     component:Register
+  },
+  {
+    path:'/goodList',
+    name:'goodList',
+    component:GoodList
+  },{
+    path:'/goodDetail',
+    name:'goodDetail',
+    component:GoodDetail
   }
   ,
   {
@@ -60,6 +75,22 @@ export default new Router({
     },{
       path: '*',
       redirect: 'home'
+},
+{
+  path:'/memberInfo',
+  component:MemberInfo
+},
+{
+  path:'/recieverAddress',
+  component:RecieverAddress
+},
+{
+  path:'/recieverAddressList',
+  component:RecieverAddressList //收货地址
+},
+{
+  path:'/memberOrders',
+  component:MemberOrders //会员订单
 }
 ]
 })

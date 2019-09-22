@@ -1,5 +1,5 @@
 <template>
-  <div style="height:400px;">
+  <div >
     <!--下面通过传递进来的id完成初始化-->
     <script :id="randomId"  type="text/plain"></script>
   </div>
