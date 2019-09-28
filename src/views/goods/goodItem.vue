@@ -28,8 +28,9 @@
     width:250px;
     
     border:1px solid rgba($color: #CCCCCC, $alpha: 0.5);
-    margin:0 22px 22px 0;;
+    margin:0 3px 10px 3px;;
     float:left;
+    background-color: #ffffff;
 }
 .goodItemFrame:hover{
     border:1px solid rgba($color: #f40, $alpha: 0.5)

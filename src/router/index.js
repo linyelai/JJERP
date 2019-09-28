@@ -15,6 +15,7 @@ import RecieverAddress from '../views/members/recieverAddress.vue'
 import RecieverAddressList from '../views/members/RecieverAddressList'
 import MemberOrders from '../views/members/MemberOrders'
 import GoodCate from '../views/goodsCategory/goodsCate'
+import GoodIndex from '../views/index/index'
 Vue.use(Router)
 
 export default new Router({
@@ -96,6 +97,11 @@ export default new Router({
 {
   path:"/goodCate",
   component:GoodCate//商品类目
+}
+,
+{
+  path:'/index',
+  component:GoodIndex
 }
 ]
 })

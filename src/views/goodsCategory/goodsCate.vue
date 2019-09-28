@@ -1,6 +1,6 @@
 <!-- 商品类目-->
 <template>
-    <div >
+    <div class="goodCate" >
     <div class="first-good-cate">
       <ul>
           <li v-for="goodCate in firstCate" v-bind="key">
@@ -124,12 +124,13 @@ export default {
 }
 .second-cate-conatainer{
     float: left;
-    width:600px;
+    width:880px;
+    background-color:#ffffff;
 }
 .second-cate{
     height: 500px;
     width:60px;
-    margin-top: 20px;
+    padding-top: 20px;
     margin-left: 20px;
     float:left;
 
@@ -157,6 +158,12 @@ export default {
 }
 .third-cate-item a:hover{
     color:#429cf0;
+    
+}
+.goodCate{
+    width:1080px;
+    margin:auto;
+    background-color: #ffffff;
     
 }
 </style>
