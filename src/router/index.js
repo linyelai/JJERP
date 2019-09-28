@@ -14,6 +14,7 @@ import MemberInfo from '../views/members/memberInfo.vue'
 import RecieverAddress from '../views/members/recieverAddress.vue'
 import RecieverAddressList from '../views/members/RecieverAddressList'
 import MemberOrders from '../views/members/MemberOrders'
+import GoodCate from '../views/goodsCategory/goodsCate'
 Vue.use(Router)
 
 export default new Router({
@@ -23,42 +24,42 @@ export default new Router({
     path: '/',
     redirect: 'login',
   }, {
-    path: '/login',
+    path: '/login',//登录
     name: 'login',
     component: Login,
   }, 
   {
-    path:'/register',
+    path:'/register',//注册
     name:'register',
     component:Register
   },
   {
-    path:'/goodList',
+    path:'/goodList',//商品列表
     name:'goodList',
     component:GoodList
   },{
-    path:'/goodDetail',
+    path:'/goodDetail',//商品详情
     name:'goodDetail',
     component:GoodDetail
   }
   ,
   {
     path: '/home',
-    component: Index,
+    component: Index,//首页
     children: [{
       path: '',
       component: Home,
       meta: ['Dashboard'],
     }]
   }, {
-    path: '/tables',
+    path: '/tables',//
     name: 'tables',
     redirect: 'tables/basic',
     component: Index,
     children: tables
   }, 
   {
-    path:'/addProduct',
+    path:'/addProduct',//添加商品
     name:'addProduct',
     component:AddProduct
   },
@@ -77,11 +78,11 @@ export default new Router({
       redirect: 'home'
 },
 {
-  path:'/memberInfo',
+  path:'/memberInfo',//会员信息
   component:MemberInfo
 },
 {
-  path:'/recieverAddress',
+  path:'/recieverAddress',//会员收货地址
   component:RecieverAddress
 },
 {
@@ -91,6 +92,10 @@ export default new Router({
 {
   path:'/memberOrders',
   component:MemberOrders //会员订单
+},
+{
+  path:"/goodCate",
+  component:GoodCate//商品类目
 }
 ]
 })
