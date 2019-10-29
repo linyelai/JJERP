@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="orderlist">
         
           <el-table
             :data="tableData"
@@ -18,7 +18,7 @@
                         </div>
                     </template>      
              </el-table-column>
-             <el-table-column  width="100"  label="单价">
+             <el-table-column  width="150"  label="单价">
                     <template slot-scope="scope">
                         <div class="order-col shopName">
                         <div class="order-shop-name"><a href="#">{{scope.row.shopName}}</a>
@@ -38,7 +38,7 @@
                         </div>
                     </template>      
              </el-table-column>
-             <el-table-column  width="80"  label="数量">
+             <el-table-column  width="100"  label="数量">
                     <template slot-scope="scope">
                         <div class="order-col">
                          
@@ -67,7 +67,7 @@
                         </div>
                     </template>      
              </el-table-column>
-             <el-table-column  width="100"  label="订单详情">
+             <el-table-column  width="176"  label="订单详情">
                     <template slot-scope="scope">
                         <div class="order-col shopName">
                         <div class="order-detail"> 
@@ -150,6 +150,11 @@ export default {
     
 }
 .shopName{
-    width:100px;
+    width:140px;
+}
+.orderlist{
+    width:1160px;
+    float:left;
+    OVERFLOW-X:hidden;
 }
 </style>

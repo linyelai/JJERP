@@ -16,6 +16,8 @@ import RecieverAddressList from '../views/members/RecieverAddressList'
 import MemberOrders from '../views/members/MemberOrders'
 import GoodCate from '../views/goodsCategory/goodsCate'
 import GoodIndex from '../views/index/index'
+import PersonCenter from '../views/members/personCenter'
+import MemberLogin from '../views/members/login'
 Vue.use(Router)
 
 export default new Router({
@@ -102,6 +104,14 @@ export default new Router({
 {
   path:'/index',
   component:GoodIndex
+},
+{
+  path:'/personCenter',
+  component:PersonCenter
+},
+{
+  path:'/member/login',
+  component:MemberLogin
 }
 ]
 })
