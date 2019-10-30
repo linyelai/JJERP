@@ -17,19 +17,44 @@
             type="selection"
             width="55">
           </el-table-column>
+           <el-table-column
+            prop="productImg"
+            label="商品图片"
+            width="200">
+                <template   slot-scope="scope">            
+                    <img :src="scope.row.productImg"  min-width="70" height="70" />
+                 </template>  
+          </el-table-column>
           <el-table-column
-            prop="goodName"
+            prop="productName"
             label="商品名"
             width="200">
           </el-table-column>
+           <el-table-column
+            prop="brandId"
+            label="品牌"
+           >
+          </el-table-column>
           <el-table-column
-            prop="type"
+            prop="cateId"
             label="类型"
            >
           </el-table-column>
           <el-table-column
             prop="price"
             label="价格"
+          >
+          </el-table-column>
+
+          <el-table-column
+            prop="stock"
+            label="库存"
+          >
+          </el-table-column>
+
+           <el-table-column
+            prop="status"
+            label="状态"
           >
           </el-table-column>
           <el-table-column
@@ -50,7 +75,7 @@
             :page-sizes="[10, 15, 20, 30]"
             :page-size="10"
             layout="total, sizes, prev, pager, next, jumper"
-            :total="400">
+            :total="totalPage">
           </el-pagination>
         </div>
       </div>
@@ -60,32 +85,18 @@
 </template>
 
 <script>
+
+import httpclient from '../../tool/httpclient.js'
   export default {
     data() {
       return {
-        currentPage: 1,
-        tableData: [{
-          goodName: 'IPhone x',
-          type: '电子',
-          price: '4869.00',
-
-        },{
-          goodName: '华为',
-          type: '电子',
-          price: '4869.00',
-
-        }, {
-          goodName: '小米',
-          type: '电子',
-          price: '4869.00',
-
-        }, {
-          goodName: '三星',
-          type: '电子',
-          price: '4869.00',
-
-        }]
+        currentPage: 0,
+        totalPage:0,
+        tableData:[]
       }
+    },
+    created(){
+      this.loadData();
     },
     methods: {
       handleSizeChange(val) {
@@ -100,8 +111,27 @@
       },
       addProduct:function(){
         this.$router.push("/addProduct");
-      }
-    }
+      },
+      loadData:function(){
+
+      let that = this;
+      httpclient.get('/api/product',{
+                    productName:'华为手机'
+                    }).then(function (response) {
+                      // handle success
+                      console.log(response);
+                      let data = response.data;
+                      that.tableData = data.data;
+                      that.currentPage = data.currentPage;
+                      that.totalPage = data.totalPage;
+                    }).catch(function (error) {
+                      // handle error
+                      console.log(error);
+                    }).then(function () {
+                      // always executed
+                    });
+        }
+      } 
   }
 </script>
 <style lang="scss">

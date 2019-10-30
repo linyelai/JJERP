@@ -34,7 +34,16 @@ module.exports = {
     autoOpenBrowser: true, // 是否自动打开浏览器。true 是，false 否
     assetsSubDirectory: 'static', // 应用程序存放的资源主目录 
     assetsPublicPath: '/', // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名
-    proxyTable: {}, // 需要 proxyTable 代理的接口（可跨域）
+    proxyTable: {
+
+      '/api':{
+              target: 'http://localhost:8080', // 接口的域名
+              changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
+        pathRewrite: {
+          '^/api': ''       //这是一个通配符，设置完了之后每个接口都要在前面加上/api（特别注意这一点）
+      }
+    }
+    }, // 需要 proxyTable 代理的接口（可跨域）
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

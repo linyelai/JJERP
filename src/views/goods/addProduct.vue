@@ -21,7 +21,7 @@
         <div><el-input placeholder="商品价格" v-model="price"  clearable></el-input></div>
       
         <div><el-input placeholder="库存" v-model="num"  clearable></el-input></div>
-        <div><el-input placeholder="sku" v-model="sku"  clearable></el-input></div>
+        <div><el-input placeholder="sku" v-model="spu"  clearable></el-input></div>
         <div>
              <el-select v-model="category" placeholder="类目">
                 <el-option
@@ -66,21 +66,25 @@
         
     </div>
     <div class="productDesc"><VueUEditor ></VueUEditor></div>
-    <div class="submitBtn"><el-button type="primary">发布</el-button><el-button type="info">返回</el-button></div>
+    <div class="submitBtn"><el-button type="primary" @click="addProduct()">发布</el-button><el-button type="info">返回</el-button></div>
   </div>
 </template>
 <script>
 import VueUEditor from '@/components/UEditor.vue'
-
+import httpclient from '../../tool/httpclient.js'
+ 
   export default {
     data() {
       return {
           productName:"",
-          sku:"",
-          fileList:[],
-          price:"",
-          num:"",
-          category:[],
+          spu:"",
+          images:'',
+          price:'',
+          num:'',
+          brandId:'',
+          cateId:'',
+          logisticsId:logisticsId,
+          category:[{id:'1',name:'家用电器'}],
           options:{},
           checkList:[],
           brand:[],
@@ -101,6 +105,29 @@ import VueUEditor from '@/components/UEditor.vue'
       handleExceed:function(){
 
       },
+      addProduct:function(){
+        //发布商品
+        console.log("发布商品");
+        httpclient.post('/api/product',{
+                   productName:'this.productName',
+                   productImg:'this.spu',
+                   price:10,
+                   stock:10,
+                   cateId:10,
+                   brandId:40,
+                   logisticsId:10,
+                   desc:'this.desc'
+                  }).then(function (response) {
+                    // handle success
+                    console.log(response);
+                  }).catch(function (error) {
+                    // handle error
+                    console.log(error);
+                  }).then(function () {
+                    // always executed
+                  });
+        
+      }
      
     },
     components:{
