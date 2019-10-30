@@ -25,9 +25,11 @@ import GoodItem from './goodItem.vue'
   }
 </script>
 <style lang="scss">
+
   .searchResult{
-      width:1375px;
-      margin-left: 40px;
-      margin-top:60px;
+      width:1440px;
+      margin:auto;
+      
+
   }
 </style>

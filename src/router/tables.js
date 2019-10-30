@@ -7,6 +7,9 @@ import CustomerManage from '../views/customer/customer.vue'
 import Orders from '../views/orders/order.vue'
 import Goods from '../views/goods/goods.vue'
 import Bom from '../views/bom/bom.vue'
+import Brand from '../views/brand/brand.vue'
+import CateManage from '../views/goodsCategory/goodCateManage.vue'
+import Logistics from '../views/logistics/logistics'
 export default [{
     path: 'basic',
     name: 'basictable',
@@ -52,4 +55,19 @@ export default [{
   name: 'bom',
   component: Bom,
   meta: ['物料管理']
+},{
+  path: '/brandManage',
+  name: 'brand',
+  component: Brand,
+  meta: ['品牌管理']
+},{
+  path: '/cateManage',
+  name: 'cate',
+  component: CateManage,
+  meta: ['类别管理']
+},{
+  path: '/logisticManage',
+  name: 'logistics',
+  component: Logistics,
+  meta: ['物流管理']
 }]

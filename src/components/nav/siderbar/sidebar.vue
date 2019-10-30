@@ -3,8 +3,8 @@
     <div class="sidebar-menu"  >
     <el-menu :default-active="$route.path" :unique-opened=true router  @open="handleOpen" @close="handleClose" class="right_menu"
     :collapse='isCollapse'
-      v-for="(item, index) in menuItem" :key="index" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-      <el-menu-item v-if="typeof item.child === 'undefined'" :index="item.path" class="right_menu">
+      v-for="(item, index) in menuItem" :key="index" background-color="#545c64" text-color="#fff" active-text-color="#353535">
+      <el-menu-item v-if="typeof item.child === 'undefined'" :index="item.path" active-text-color="#353535" class="right_menu">
         <!--<i class="icon" :class="item.class">hh</i>-->
         <span class="icon" :class="item.class"><img :src="item.image"  style="width:16px;height:16px;" /></span>
         <span slot="title">{{ item.title }}</span>
@@ -61,6 +61,27 @@ export default {
     },{
           title: "物料管理",
           path: "/bomManage",
+          image: "../../../../static/icon/matirel.svg"
+
+
+        }
+        ,{
+          title: "品牌管理",
+          path: "/brandManage",
+          image: "../../../../static/icon/matirel.svg"
+
+
+        }
+          ,{
+          title: "类目管理",
+          path: "/cateManage",
+          image: "../../../../static/icon/matirel.svg"
+
+
+        }
+          ,{
+          title: "物流管理",
+          path: "/logisticManage",
           image: "../../../../static/icon/matirel.svg"
 
 
@@ -124,11 +145,11 @@ export default {
 }
 .custom-00a597 .el-menu,.wq-sidebar
 {
-  background-color: #00a597;
+  background-color: #feffff;
 
 }
 .custom-00a597 .el-menu-item{
-  color: #ffffff;
+  color: #8c8c8c;
 }
 .custom-00a597 .el-menu-item:hover {
   background-color: #d1e5e5;
