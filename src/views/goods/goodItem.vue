@@ -25,12 +25,13 @@
 </script>
 <style lang="scss">
 .goodItemFrame{
-    width:250px;
+    width:280px;
     
     border:1px solid rgba($color: #CCCCCC, $alpha: 0.5);
     margin:0 3px 10px 3px;;
     float:left;
     background-color: #ffffff;
+    padding:20px;
 }
 .goodItemFrame:hover{
     border:1px solid rgba($color: #f40, $alpha: 0.5)

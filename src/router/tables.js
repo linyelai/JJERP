@@ -10,6 +10,7 @@ import Category from '../views/category/category.vue'
 //import AddCategory from '../views/category/addCategory.vue'
 export default [ 
   {
+
   path: '/userManage',
   name: 'userManage',
   component: UserManage,
@@ -46,6 +47,7 @@ export default [
   component: Brand,
   meta: ['品牌管理']
 },{
+
   path: '/categoryManage',
   name: 'category',
   component: Category,
@@ -58,3 +60,4 @@ export default [
 //   meta: ['添加类别']
 // }
 ]
+
