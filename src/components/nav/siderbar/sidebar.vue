@@ -45,8 +45,8 @@ export default {
           path: "/roleManage",
           image: "../../../../static/icon/role.svg"
         },{
-          title: "客户管理",
-          path: "/customerManage",
+          title: "商家管理",
+          path: "/shopManage",
           image: "../../../../static/icon/customer.svg"
         },
         {
@@ -58,13 +58,19 @@ export default {
       title: "商品管理",
       path: "/goodsManage",
       image: "../../../../static/icon/goods.svg"
-    },{
-          title: "物料管理",
-          path: "/bomManage",
+    },
+    {
+          title: "品牌管理",
+          path: "/brandManage",
           image: "../../../../static/icon/matirel.svg"
 
 
-        }
+     },
+      {
+          title: "类别管理",
+          path: "/categoryManage",
+          image: "../../../../static/icon/matirel.svg"
+       }
       ],
       isCollapse: false
     };

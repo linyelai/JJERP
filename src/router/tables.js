@@ -1,23 +1,15 @@
-import Basictable from '../views/tables/basic.vue'
-import Fixedheadertable from '../views/tables/fixedheader.vue'
+
 import UserManage from '../views/tables/userManage.vue'
 import PermissionManage from '../views/permission/permission.vue'
 import RoleManage from '../views/role/role.vue'
-import CustomerManage from '../views/customer/customer.vue'
+import ShopManage from '../views/shop/shop.vue'
 import Orders from '../views/orders/order.vue'
 import Goods from '../views/goods/goods.vue'
-import Bom from '../views/bom/bom.vue'
-export default [{
-    path: 'basic',
-    name: 'basictable',
-    component: Basictable,
-    meta: ['基础表格'],
-}, {
-    path: 'fixedheader',
-    name: 'fixedheadertable',
-    component: Fixedheadertable,
-    meta: ['固定标头表格']
-}, {
+import Brand from '../views/brand/brand.vue'
+import Category from '../views/category/category.vue'
+//import AddCategory from '../views/category/addCategory.vue'
+export default [ 
+  {
   path: '/userManage',
   name: 'userManage',
   component: UserManage,
@@ -33,10 +25,10 @@ export default [{
     component: RoleManage,
     meta: ['角色管理']
 },{
-  path: '/customerManage',
-  name: 'customerManage',
-  component: CustomerManage,
-  meta: ['客户管理']
+  path: '/shopManage',
+  name: 'shopManage',
+  component: ShopManage,
+  meta: ['商家管理']
 },{
   path: '/orderManage',
   name: 'orders',
@@ -47,9 +39,22 @@ export default [{
   name: 'goods',
   component: Goods,
   meta: ['商品管理']
+ }
+,{
+  path: '/brandManage',
+  name: 'brand',
+  component: Brand,
+  meta: ['品牌管理']
 },{
-  path: '/bomManage',
-  name: 'bom',
-  component: Bom,
-  meta: ['物料管理']
-}]
+  path: '/categoryManage',
+  name: 'category',
+  component: Category,
+  meta: ['类别管理']
+}
+// ,{
+//   path: '/addCategory',
+//   name: 'addCategory',
+//   component: AddCategory,
+//   meta: ['添加类别']
+// }
+]

@@ -3,5 +3,7 @@ var prodEnv = require('./prod.env')
 
 // 合并输出
 module.exports = merge(prodEnv, {
-  NODE_ENV: '"development"'
+  NODE_ENV: '"development"',
+  BASE_API: '"http://localhost:8088"'
 })
+

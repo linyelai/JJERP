@@ -18,6 +18,7 @@ import GoodCate from '../views/goodsCategory/goodsCate'
 import GoodIndex from '../views/index/index'
 import PersonCenter from '../views/members/personCenter'
 import MemberLogin from '../views/members/login'
+import AddCategory from '../views/category/addCategory'
 Vue.use(Router)
 
 export default new Router({
@@ -26,6 +27,9 @@ export default new Router({
   routes: [{
     path: '/',
     redirect: 'login',
+  },{
+    path: '/addCategory',
+    component: AddCategory
   }, {
     path: '/login',//登录
     name: 'login',
@@ -113,5 +117,6 @@ export default new Router({
   path:'/member/login',
   component:MemberLogin
 }
+
 ]
 })

@@ -10,26 +10,36 @@
     <div class="bastic-table">
       <div class="page-content">
         <el-table
-          :data="tableData"
+          :data="orderList"
           style="width: 100%">
           <el-table-column
             type="selection"
             width="55">
           </el-table-column>
           <el-table-column
-            prop="orderNo"
+            prop="orderSn"
             label="订单号"
             width="200">
           </el-table-column>
           <el-table-column
-            prop="type"
-            label="订单类型"
+            prop="totalMoney"
+            label="总计消费"
            >
           </el-table-column>
           <el-table-column
-            prop="createTime"
-            label="生成时间"
+            prop="status"
+            label="状态"
           >
+          <template slot-scope="scope">
+                    <span v-if="scope.row.status == 0">待付款</span> 
+                    <span v-else-if="scope.row.status==1">已完成</span>
+                    <span v-else-if="scope.row.status==2">已取消</span>
+                </template>
+          </el-table-column>
+          <el-table-column
+            prop="createTime"
+            label="创建时间"
+           >
           </el-table-column>
           <el-table-column
             fixed="right"
@@ -59,33 +69,19 @@
 </template>
 
 <script>
+import {orderList} from '@/testdata/data'
   export default {
     data() {
       return {
         currentPage: 1,
-        tableData: [{
-          orderNo: '20190120001',
-          type: '服装',
-          createTime: '2019-01-20 12:20:00 ',
-
-        },{
-          orderNo: '20190120002',
-          type: '电子',
-          createTime: '2019-01-20 12:20:00 ',
-
-        }, {
-          orderNo: '20190120003',
-          type: '小吃',
-          createTime: '2019-01-20 12:20:00 ',
-
-        }, {
-          orderNo: '20190120004',
-          type: '美食',
-          createTime: '2019-01-20 12:20:00 ',
-
-        }]
+        orderList: []
       }
     },
+    mounted() {
+        
+        this.orderList = orderList;
+      
+      },
     methods: {
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);

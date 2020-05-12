@@ -10,6 +10,8 @@
   </div>
 </template>
 <script>
+ import MemberService from '../service/MemberService'
+ import {response} from '@/testdata/data'
 export default {
   data() {
     return {
@@ -24,7 +26,26 @@ export default {
         this.$store
           .dispatch("login", "tokenvalue" + Math.random(1000))
           .then(() => {
-            this.$router.push("/home");
+            var loginParam = {'username':this.phoneNum,'password':this.password};
+            var that = this;
+            if(response.data.success){
+               that.$router.push("/home");
+            }
+            // MemberService.login(loginParam).then(function (response) {
+            //   console.log(response);
+            //   if(response.data.success){
+            //       that.$router.push("/home");
+            //   }
+            //   else{
+            //     alert("用户名或者密码错误");
+            //   }
+              
+              
+            // })
+            // .catch(function (error) {
+            //   console.log(error);
+            // });
+            
           });
       } else {
         this.$message({

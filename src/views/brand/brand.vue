@@ -10,26 +10,29 @@
     <div class="bastic-table">
       <div class="page-content">
         <el-table
-          :data="tableData"
+          :data="brandList"
           style="width: 100%">
           <el-table-column
             type="selection"
             width="55">
           </el-table-column>
           <el-table-column
-            prop="bomName"
-            label="物料名"
+            prop="brandName"
+            label="品牌名"
             width="200">
           </el-table-column>
           <el-table-column
-            prop="type"
-            label="类型"
+            prop="desc"
+            label="描述"
            >
           </el-table-column>
           <el-table-column
-            prop="remain"
-            label="剩余量"
+            prop="img"
+            label="图片"
           >
+           <template slot-scope="scope">
+                    <img :src="scope.row.img" width="32" height="32" />
+                </template>
           </el-table-column>
           <el-table-column
             fixed="right"
@@ -59,31 +62,16 @@
 </template>
 
 <script>
+import {brandList} from '@/testdata/data'
+
   export default {
+    mounted() {
+      this.brandList = brandList;
+    },
     data() {
       return {
         currentPage: 1,
-        tableData: [{
-          bomName: 'cpu',
-          type: '电子',
-          remain: '1000',
-
-        },{
-           bomName: '内存',
-          type: '电子',
-          remain: '1000',
-
-        }, {
-           bomName: '显卡',
-          type: '电子',
-          remain: '1000',
-
-        }, {
-          bomName: '鼠标',
-          type: '电子',
-          remain: '1000',
-
-        }]
+        brandList: []
       }
     },
     methods: {

@@ -3,9 +3,9 @@
         <div class="login-container">
             <div class="login-form">
                 <el-form>
-                    <el-input class="member-name" placeholder="会员名" icon="el-icon-search"></el-input>
-                    <el-input class="member-password" placeholder="密码" icon="el-icon-search" show-password></el-input>
-                    <div class="login-btn"><a href="#">登录</a></div>
+                    <el-input class="member-name" v-model="memberName" placeholder="会员名" icon="el-icon-search"></el-input>
+                    <el-input class="member-password" v-model="password" placeholder="密码" icon="el-icon-search" show-password></el-input>
+                    <div class="login-btn" @click="login"><a @click="login">登录</a></div>
                 </el-form>
             </div>
         </div>
@@ -15,9 +15,16 @@
 export default {
     data() {
         return {
-            
+            memberName:null,
+            password:null
         }
     },
+    methods: {
+
+        login() {
+            alert(this.memberName);
+        }
+    }
 }
 </script>
 <style lang="scss">

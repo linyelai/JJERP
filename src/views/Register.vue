@@ -7,13 +7,13 @@
     </div>
     <div class="register-step">
         <div class="step1">
-            <span class="step-num" >1</span><span class="step-title" >设置用户名</span>
+            <div class="step-num" >1</div><div class="step-title" >设置用户名</div>
         </div>
         <div class="step2">
-            <span class="step-num" v-bind:style="stepNum2">2</span><span class="step-title" v-bind:style="stepTitle2" >完善账号信息</span>
+            <div class="step-num" v-bind:style="stepNum2">2</div><div class="step-title" v-bind:style="stepTitle2" >完善账号信息</div>
         </div>
          <div class="step3">
-            <span class="step-num" v-bind:style="stepNum3">3</span><span class="step-title" v-bind:style="stepTitle3">注册成功</span>
+            <div class="step-num" v-bind:style="stepNum3">3</div><div class="step-title" v-bind:style="stepTitle3">注册成功</div>
         </div>
 
     </div>
@@ -21,23 +21,25 @@
     <div class="register_form">
         <div v-show="showUserInfo">
             <div class="phone-num">
-                <input placeholder="手机号码" /> 
+                <input placeholder="手机号码" id="phoneNum" /> 
                 <a href="#">发送验证码</a>
             </div>
             
-            <div class="valite-code"> <input placeholder="验证码" type="text"  /></div>
-            
+            <div class="valite-code"> <input placeholder="验证码" type="text"  id="smsCode"/></div>
+         <div class="next-step" v-show="showNextBtn"><a class="submit"  @click="nextstep()" >下一步</a></div>
+  
         </div>
          <div class="perfer-info" v-show="showPerferInfo">
-             <div><input class ="nick-name" placeholder="昵称" type="text"/></div>
-             <div><input class="password" placeholder="密码" type="password"/></div>
-             <div><input class="password" placeholder="确认密码" type="password"/></div>
+             <div><input class ="nick-name" id="nickName" placeholder="昵称" type="text"/></div>
+             <div><input class="password" placeholder="密码" id="password" type="password"/></div>
+             <div><input class="password" placeholder="确认密码" id="confirmPassword" type="password"/></div>
+             <div class="next-step" v-show="showNextBtn"><a class="submit"  @click="nextstep()" >下一步</a></div>
+
          </div>
          <div v-show="isSuccess" >
              <div class="success-tag"><img src="../../static/images/gou.jpg" style="width:40px;height:40px;"> 恭喜您注册成功</div>
              <div class="login"><a href="/login" class="submit">立即登录</a></div>
          </div>
-         <div class="next-step" v-show="showNextBtn"><a class="submit"  @click="nextstep()" >下一步</a></div>
     </div>
   </div>
 </template>
@@ -82,6 +84,14 @@ export default {
            this.showPerferInfo =false;
            this.showNextBtn = false;
            this.isSuccess = true;
+           //提交注册信息
+           var memberName = phoneNum;
+           var password = password;
+           var smsCode = smsCode;
+           var nickName = nickName;
+           var memberInfo = {'memberName':memberName,'password':password,'smsCode':smsCode,'nickName':nickName};
+           memberService.registerMember(memberInfo)
+
         }
     }
    
@@ -123,7 +133,14 @@ margin-left: 100px;
     width:180px;
     height: 180px;
 }
-.phone-num,.valite-code{
+.phone-num{
+ width:400px;
+    height: 45px;
+    margin-left:0px;
+    margin-right: 0px;
+    margin-top:50px;
+}
+.valite-code{
     width:400px;
     height: 45px;
     margin-left:0px;
@@ -187,6 +204,7 @@ margin-left: 100px;
         border-top: 1px solid rgba(2,223,223,0.5);
         width:100%;
     }
+
     .step-num {
         width:20px;
         height: 20px;
@@ -199,7 +217,7 @@ margin-left: 100px;
     .register-step{
         margin:auto;
         width:800px;
-        height: 20px;
+        height: 70px;
     }
     .step-title{
         float:left;
@@ -208,11 +226,9 @@ margin-left: 100px;
         font-size: 14px;
         margin-left: 2px;
     }
-    .step1{
-       margin-left: 200px;
-    }
+    
      .step2 .step-num{
-       margin-left: 20px;
+       margin-left:0;
        background-color: #888888;
        
     }
@@ -220,13 +236,14 @@ margin-left: 100px;
         color:#888888;
     }
       .step3 .step-num{
-       margin-left: 20px;
+       margin-left: 0px;
         background-color: #888888;
         
     }
-    .register-success{
-
+    .step1,.step2,step3{
+        height:20px;
     }
+    
     .success-tag{
         color:#00ff00;
         font-size: 40px;

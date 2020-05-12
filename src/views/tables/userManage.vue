@@ -10,25 +10,32 @@
  <div class="bastic-table">
       <div class="page-content">
     <el-table
-      :data="tableData"
+      :data="memberList"
       style="width: 100%">
       <el-table-column
         type="selection"
         width="55">
       </el-table-column>
       <el-table-column
-        prop="jobId"
-        label="工号"
+        prop="memberName"
+        label="会员账号"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="name"
-        label="姓名"
+        prop="nickName"
+        label="昵称"
         width="180">
         </el-table-column>
       <el-table-column
         prop="phoneNum"
         label="手机号码">
+      </el-table-column>
+       <el-table-column
+        prop="avatar"
+        label="头像">
+        <template slot-scope="scope">
+                    <img :src="scope.row.avatar" width="32" height="32" />
+                </template>
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -59,61 +66,28 @@
 
   <script>
     import "@/assets/erpicon/iconfont.css";
+    import MemberService from "../../service/MemberService"
+    import {memberList} from '@/testdata/data'
     export default {
+
+      mounted() {
+        
+        this.memberList = memberList;
+        // var param = {"pageSize":20,"currentPage":1};
+        // MemberService.findMemberByPage(param).then(function(response){
+        //  var memberList = response.data;
+        //   console.log(memberList);
+
+        // })
+        // .catch(function(error){
+        //       console.log(error)
+        // });
+
+      },
       data() {
         return {
           currentPage: 1,
-          tableData: [{
-            jobId: '0000080701',
-            name: '张飞',
-            phoneNum: '13737724745',
-
-          }, {
-            jobId: '0000080701',
-            name: '张飞',
-            phoneNum: '13737724745',
-
-          }, {
-            jobId: '0000080701',
-            name: '张飞',
-            phoneNum: '13737724745',
-
-          }, {
-            jobId: '0000080701',
-            name: '张飞',
-            phoneNum: '13737724745',
-
-          },{
-            jobId: '0000080701',
-            name: '张飞',
-            phoneNum: '13737724745',
-
-          },{
-            jobId: '0000080701',
-            name: '张飞',
-            phoneNum: '13737724745',
-
-          },{
-            jobId: '0000080701',
-            name: '张飞',
-            phoneNum: '13737724745',
-
-          },{
-            jobId: '0000080701',
-            name: '张飞',
-            phoneNum: '13737724745',
-
-          },{
-            jobId: '0000080701',
-            name: '张飞',
-            phoneNum: '13737724745',
-
-          },{
-            jobId: '0000080701',
-            name: '张飞',
-            phoneNum: '13737724745',
-
-          }]
+          memberList: []
         }
       },
       methods: {

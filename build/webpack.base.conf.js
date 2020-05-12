@@ -38,6 +38,7 @@ module.exports = {
       // 起别名： '@' ->  'src的绝对路径'
       '@': resolve('src')
     }
+   
   },
   // 模块配置
   module: {

@@ -2,49 +2,43 @@
   <div style="margin-left:5px;">
     <div style="margin-top:5px;margin-bottom:5px;margin-left:10px;">
       <div >
-        <el-input placeholder="商品名" style="width:120px; " ></el-input>
+        <el-input placeholder="类别名" style="width:120px; " ></el-input>
         <el-button type="primary" icon="el-icon-search" style="margin-left:10px; ">搜索</el-button>
+          <el-button type="primary" icon="el-icon-add" style="margin-left:10px; " @click="addCategory">添加</el-button>
         <el-button type="primary" icon="el-icon-delete">删除</el-button>
-        <el-button type="primary" icon="el-icon-delete" @click="addProduct">发布商品</el-button>
       </div>
     </div>
     <div class="bastic-table">
       <div class="page-content">
         <el-table
-          :data="productList"
+          :data="categoryList"
           style="width: 100%">
           <el-table-column
             type="selection"
             width="55">
           </el-table-column>
           <el-table-column
-            prop="productName"
-            label="商品名"
+            prop="categoryName"
+            label="类别名"
             width="200">
           </el-table-column>
-          
           <el-table-column
-            prop="price"
-            label="价格"
+            prop="desc"
+            label="描述"
+           >
+            </el-table-column>
+           <el-table-column
+            prop="parentCategory"
+            label="父类别"
           >
           </el-table-column>
-          <el-table-column
-            prop="goodsCategory"
-            label="类型"
-           >
-          </el-table-column>
-          <el-table-column
-            prop="goodsBrand"
-            label="品牌"
-           >
-          </el-table-column>
-
+         
           <el-table-column
             label="图片"
-           >
-            <template slot-scope="scope">
-                    <img :src="scope.row.productMainImg" width="48" height="48" />
-                </template>
+          >
+          <template slot-scope="scope">
+                  <img :src="scope.row.img" width="32" height="32" />
+            </template>
           </el-table-column>
           <el-table-column
             fixed="right"
@@ -74,15 +68,16 @@
 </template>
 
 <script>
-import {productList} from '@/testdata/data'
+import {categoryList} from '@/testdata/data'
+
   export default {
-    mounted() {
-      this.productList = productList;
-    },
+      mounted() {
+          this.categoryList = categoryList;
+      },
     data() {
       return {
         currentPage: 1,
-        productList: []
+        categoryList: []
       }
     },
     methods: {
@@ -96,8 +91,8 @@ import {productList} from '@/testdata/data'
       {
         console.log(val.jobId);
       },
-      addProduct:function(){
-        this.$router.push("/addProduct");
+      addCategory(){
+          this.$router.push('/addCategory');
       }
     }
   }
