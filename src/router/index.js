@@ -15,21 +15,27 @@ import RecieverAddress from '../views/members/recieverAddress.vue'
 import RecieverAddressList from '../views/members/RecieverAddressList'
 import MemberOrders from '../views/members/MemberOrders'
 import GoodCate from '../views/goodsCategory/goodsCate'
-import GoodIndex from '../views/index/index'
+import GoodIndex from '@/views/index/index'
 import PersonCenter from '../views/members/personCenter'
 import MemberLogin from '../views/members/login'
 import AddCategory from '../views/category/addCategory'
+import AddBrand from '../views/brand/addBrand'
+import BuyNow from '../views/orders/buynow'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'hash',
+  mode: 'history',
   linkActiveClass: 'active',
-  routes: [{
-    path: '/',
-    redirect: 'login',
+  routes: [
+  {
+    path:'/mall',
+    component:GoodIndex
   },{
     path: '/addCategory',
     component: AddCategory
+  },{
+    path: '/addBrand',
+    component: AddBrand
   }, {
     path: '/login',//登录
     name: 'login',
@@ -49,16 +55,12 @@ export default new Router({
     name:'goodDetail',
     component:GoodDetail
   }
-  ,
-  {
-    path: '/home',
-    component: Index,//首页
-    children: [{
-      path: '',
-      component: Home,
-      meta: ['Dashboard'],
-    }]
-  }, {
+  ,{
+    path:'/buyNow',//立即购买
+    name:'buyNow',
+    component:BuyNow
+  }
+  , {
     path: '/tables',//
     name: 'tables',
     redirect: 'tables/basic',
@@ -80,10 +82,7 @@ export default new Router({
     {
       path:'/editStaff',
       component:EditStaff
-    },{
-      path: '*',
-      redirect: 'home'
-},
+    },
 {
   path:'/memberInfo',//会员信息
   component:MemberInfo
@@ -105,10 +104,6 @@ export default new Router({
   component:GoodCate//商品类目
 }
 ,
-{
-  path:'/index',
-  component:GoodIndex
-},
 {
   path:'/personCenter',
   component:PersonCenter

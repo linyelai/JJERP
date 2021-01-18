@@ -7,20 +7,15 @@
   <el-form-item label="类别名称">
     <el-input v-model="category.name"></el-input>
   </el-form-item>
-  <el-form-item label="父类别">
-   <el-cascader
-    v-model="parentCategory"
-    :options="options"
-    @change="handleChange"></el-cascader>
-  </el-form-item>
   <el-form-item label="类别描述">
     <el-input type="textarea"  v-model="category.desc"></el-input>
   </el-form-item>
 <el-upload
   class="upload-demo"
-  action="https://jsonplaceholder.typicode.com/posts/"
+  action="http://localhost:8088/upload"
   :on-preview="handlePreview"
   :on-remove="handleRemove"
+  :on-success="handleUploadSuccess"
   :before-remove="beforeRemove"
   multiple
   :limit="3"
@@ -41,7 +36,7 @@
 
 <script>
 import topbar from "@/components/nav/topbar/topbar.vue"
-
+import BrandService from '@/service/BrandService.js'
   export default {
       components: {
     topbar
@@ -51,11 +46,13 @@ import topbar from "@/components/nav/topbar/topbar.vue"
       },
     data() {
       return {
+        fileList:[],
 
         category:{
             name:'',
             desc:'',
-            parentId:''
+            parentId:'',
+            img:null
         },
         
         options: [{
@@ -85,6 +82,16 @@ import topbar from "@/components/nav/topbar/topbar.vue"
     },
     methods: {
       
+      onSubmit(){
+          
+            BrandService.addCategory(this.category);
+      },
+      handleUploadSuccess (response, file, fileList) {
+      this.category.img = response.data;
+      
+      
+    }
+
     }
   }
 </script>

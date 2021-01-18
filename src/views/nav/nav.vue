@@ -1,9 +1,9 @@
 <template>
     <div class="site-nav">
-        <div class="float-left home"><a href="#">首页</a></div>
-        <div class="float-left login-tip"><a href="#">请登录</a></div>
-        <div class="float-left register-tip"><a href="#">免费注册</a></div>
-        <div class="float-right person-profile"> <a href="#">我的淘宝</a></div>
+        <div class="float-left home"><a href="/mall">首页</a></div>
+        <div class="float-left login-tip"><a href="#" @click="login">请登录</a></div>
+        <div class="float-left register-tip"><a href="#" @click="register">免费注册</a></div>
+        <div class="float-right person-profile"> <a href="/personCenter" >我的淘宝</a></div>
         <div class="float-right"> <a href="#">购物车</a></div>
         <div class="float-right"> <a href="#">手机版</a></div>
          <div class="float-right"> <a href="#">淘宝网</a></div>
@@ -16,6 +16,14 @@ export default {
     data() {
         return {
             
+        }
+    },
+    methods: {
+        login(){
+            this.$router.push('/member/login');
+        },
+        register(){
+            this.$router.push('/register')
         }
     },
 }

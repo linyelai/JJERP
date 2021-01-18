@@ -4,7 +4,7 @@
       <div class="login-content">
         <el-input placeholder="请输入用户名" class="phone-number" v-model="phoneNum"></el-input>
         <el-input placeholder="请输入密码" type="password" class="password-number" v-model="password" @keyup.enter.native="login"></el-input>
-        <a class="submit" href="javascript:;" @click="login">登录</a>
+        <a class="loginBtn" href="javascript:;" @click="login">登录</a> <a class="registry" href="javascript:;" @click="register">注册</a>
       </div>
     </section>
   </div>
@@ -29,7 +29,7 @@ export default {
             var loginParam = {'username':this.phoneNum,'password':this.password};
             var that = this;
             if(response.data.success){
-               that.$router.push("/home");
+               that.$router.push("/userManage");
             }
             // MemberService.login(loginParam).then(function (response) {
             //   console.log(response);
@@ -55,6 +55,10 @@ export default {
         });
       }
     }
+    ,
+  register(){
+    this.$router.push('/register')
+  }
   }
 };
 </script>
@@ -99,7 +103,7 @@ export default {
         background: #f8f8f8;
       }
     }
-    .submit {
+    .loginBtn {
       display: block;
       height: 45px;
       text-align: center;
@@ -109,7 +113,23 @@ export default {
       color: #fff;
       font-size: 16px;
       margin: 30px 0;
+      float:left;
+      width:300px;
     }
   }
+}
+.registry{
+ display: block;
+      height: 45px;
+      width:60px;
+      text-align: center;
+      line-height: 45px;
+      border-radius: 6px;
+      background: #666;
+      color: #fff;
+      font-size: 16px;
+      margin: 30px 0;
+      margin-left: 20px;
+      float:left;
 }
 </style>

@@ -1,5 +1,7 @@
 <template>
   <div class="goodDetailFrame" >
+    <Nav></Nav>
+    <ShopHead></ShopHead>
       <div class="goodDetail">
         <div class="mainInfo">
             <div class="goodImage">
@@ -33,8 +35,8 @@
                   <div class="goods-num-tag">件</div>
               </div>
               <div class="buy-now">
-                <div class="buy-right-now"><a href="#" >立即购买</a></div>
-                <div class="put-into-car"><a href="#">加入购物车</a></div>
+                <div class="buy-right-now"><a href="http://localhost:8017/buynow" >立即购买</a></div>
+                <div class="put-into-car"><a href="http://localhost:8017/buynow">加入购物车</a></div>
               </div>
               <div class="other-infos">
                   <div class="service-info">服务承诺</div>
@@ -105,8 +107,10 @@
   </div>
 </template>
 <script>
-
+import Nav from '../nav/nav'
+import ShopHead from '../nav/ShopHead'
   export default {
+    components:{Nav,ShopHead},
     data() {
       return {
          
@@ -123,11 +127,13 @@
   }
 </script>
 <style lang="scss">
+
 .goodDetail{
    width:1180px;
    margin:auto;
    //border-right: 1px solid #cccccc; 
    margin-top:10px;
+  
 }
 .mainInfo{
 
@@ -163,7 +169,7 @@ height:418px;
 }
 .priceDetail{
  
-  background-color: #e9e9e9;
+  background-color: #f8f6f6;
   margin-top:10px;
   height: 40px;
 }
@@ -413,5 +419,8 @@ height:418px;
 }
 .commment-bottom{
 
+}
+.goodDetail-bottom{
+  background-color: #ffffff;
 }
 </style>

@@ -73,15 +73,15 @@
       mounted() {
         
         this.memberList = memberList;
-        // var param = {"pageSize":20,"currentPage":1};
-        // MemberService.findMemberByPage(param).then(function(response){
-        //  var memberList = response.data;
-        //   console.log(memberList);
+         var param = {"pageSize":20,"currentPage":1};
+         MemberService.findMemberByPage(param).then(function(response){
+          var memberList = response.data;
+           console.log(memberList);
 
-        // })
-        // .catch(function(error){
-        //       console.log(error)
-        // });
+         })
+         .catch(function(error){
+               console.log(error)
+         });
 
       },
       data() {

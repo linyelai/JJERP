@@ -7,7 +7,7 @@ import Orders from '../views/orders/order.vue'
 import Goods from '../views/goods/goods.vue'
 import Brand from '../views/brand/brand.vue'
 import Category from '../views/category/category.vue'
-//import AddCategory from '../views/category/addCategory.vue'
+
 export default [ 
   {
 
@@ -53,11 +53,5 @@ export default [
   component: Category,
   meta: ['类别管理']
 }
-// ,{
-//   path: '/addCategory',
-//   name: 'addCategory',
-//   component: AddCategory,
-//   meta: ['添加类别']
-// }
 ]
 

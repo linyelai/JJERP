@@ -3,14 +3,14 @@
     <div class="goodCate" >
     <div class="first-good-cate">
       <ul>
-          <li v-for="goodCate in firstCate" v-bind="key">
-              <a href="#">{{goodCate}}</a>
+          <li v-for="goodCate in firstCate" >
+              <a href="#">{{goodCate.categoryName}}</a>
           </li>
       </ul>
         </div>
       <div class="second-cate-conatainer">
           <div class="second-cate" >
-              <div class="second-cate-tilte" v-for="secondCate in secondCates" v-bind="key"><a href="#">{{secondCate.name}}</a></div>
+              <div class="second-cate-tilte" v-for="secondCate in secondCates" ><a href="#">{{secondCate.categoryName}}</a></div>
           </div>
            <div class="third-cate" v-for="thirdCateItem in thirdCates">
                   <div class="third-cate-item" v-for="cateItem in  thirdCateItem.data">
@@ -21,11 +21,13 @@
    </div>
 </template>
 <script>
+ import CategoryService from '../../service/CategoryService.js'
+
 export default {
     data() {
         return {
-            firstCate:["女装/内衣","男装/运动户外","女鞋/男鞋/箱包","美妆/个人护理","腕表/眼镜/珠宝饰品","手机/数码/电脑办公","母婴玩具","零食/茶酒/进口食品","生鲜水果","大家电/生活电器","家具建材","汽车/配件/用品","家纺/家饰/鲜花","医药保健","厨具/收纳/宠物","图书/音像"],
-            secondCates:[{id:1,name:"当季流行"},{id:2,name:"精选上装"},{id:3,name:"浪漫裙装"},{id:4,name:"女士下装"},{id:5,name:"特色女装"},{id:6,name:"文胸塑身"},{id:5,name:"家具服"},{id:6,name:"内存背心"}],
+            firstCate:[],
+            secondCates:[],
             thirdCates:[
                     {
                         id:1,
@@ -86,6 +88,38 @@ export default {
                 ]
         }
     },
+    mounted() {
+        var data = {"currentPage":1,"pageSize":20,"parentId":0}
+        let that = this;
+          CategoryService.findCategory(data).then(function (response) {
+               console.log(response);
+               if(response.data.errorMsg==null){
+                   that.firstCate =  response.data.data;
+               }
+               else{
+                 log.console.error("error");
+                 
+               }
+    }).catch(function (error) {
+              console.log(error);
+             });
+    
+    data.parentId = 4;
+    CategoryService.findCategory(data).then(function (response) {
+               console.log(response);
+               if(response.data.errorMsg==null){
+                   that.secondCates =  response.data.data;
+               }
+               else{
+                 log.console.error("error");
+                 
+               }
+    }).catch(function (error) {
+              console.log(error);
+             });
+
+    },
+    
     
 }
 </script>

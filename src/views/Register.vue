@@ -21,33 +21,39 @@
     <div class="register_form">
         <div v-show="showUserInfo">
             <div class="phone-num">
-                <input placeholder="手机号码" id="phoneNum" /> 
+                <input placeholder="手机号码" id="phoneNum" v-model="phoneNum" /> 
                 <a href="#">发送验证码</a>
             </div>
             
-            <div class="valite-code"> <input placeholder="验证码" type="text"  id="smsCode"/></div>
+            <div class="valite-code"> <input placeholder="验证码" type="text" v-model="smsCode" id="smsCode"/></div>
          <div class="next-step" v-show="showNextBtn"><a class="submit"  @click="nextstep()" >下一步</a></div>
   
         </div>
          <div class="perfer-info" v-show="showPerferInfo">
-             <div><input class ="nick-name" id="nickName" placeholder="昵称" type="text"/></div>
-             <div><input class="password" placeholder="密码" id="password" type="password"/></div>
+             <div><input class ="nick-name" id="nickName" placeholder="昵称" v-model="nickName" type="text"/></div>
+             <div><input class="password" placeholder="密码" id="password" v-model="password" type="password"/></div>
              <div><input class="password" placeholder="确认密码" id="confirmPassword" type="password"/></div>
              <div class="next-step" v-show="showNextBtn"><a class="submit"  @click="nextstep()" >下一步</a></div>
 
          </div>
          <div v-show="isSuccess" >
              <div class="success-tag"><img src="../../static/images/gou.jpg" style="width:40px;height:40px;"> 恭喜您注册成功</div>
-             <div class="login"><a href="/login" class="submit">立即登录</a></div>
+             <div class="login"><a href="/member/login" class="submit">立即登录</a></div>
          </div>
     </div>
   </div>
 </template>
 <script>
+import memberService from '../service/MemberService.js'
 export default {
   data() {
    
    return {
+
+   phoneNum:'',
+   password:'',
+   smsCode:'',
+   nickName:'',
    currentStep:1,
    showPerferInfo:false,
    showUserInfo:true,
@@ -85,12 +91,23 @@ export default {
            this.showNextBtn = false;
            this.isSuccess = true;
            //提交注册信息
-           var memberName = phoneNum;
-           var password = password;
-           var smsCode = smsCode;
-           var nickName = nickName;
+           var memberName = this.phoneNum;
+           var password = this.password;
+           var smsCode = this.smsCode;
+           var nickName = this.nickName;
            var memberInfo = {'memberName':memberName,'password':password,'smsCode':smsCode,'nickName':nickName};
-           memberService.registerMember(memberInfo)
+           memberService.registerMember(memberInfo).then(function (response) {
+               console.log(response);
+               if(response.data.errorMsg==null){
+                   that.$router.push("/mall");
+               }
+               else{
+                 alert(response.data.errorMsg);
+               } 
+             })
+             .catch(function (error) {
+               console.log(error);
+             });
 
         }
     }

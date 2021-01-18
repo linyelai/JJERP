@@ -22,7 +22,7 @@ export default {
     methods: {
 
         login() {
-            alert(this.memberName);
+            this.$router.push('/mall')
         }
     }
 }

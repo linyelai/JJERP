@@ -21,5 +21,16 @@ export default {
             responseType:'json'
           })
 
+    },
+
+    registerMember(data) {
+        return request({
+            url:'/member/registry',
+            method:'post',
+            data:data,
+            responseType:'json'
+          })
+
+
     }
 }
